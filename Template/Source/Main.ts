@@ -73,6 +73,9 @@ export let DataForSave = {
       { scene: Scene, name: "Scene" }
     ];
 
+    let uiElement: HTMLElement = document.querySelector("[type=interface]");
+    DataForSave = ƒS.Progress.setData(DataForSave, uiElement);
+
     // start the sequence
     ƒS.Progress.go(scenes);
   }
