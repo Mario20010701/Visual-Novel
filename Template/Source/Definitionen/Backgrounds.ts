@@ -7,7 +7,7 @@ namespace Template {
         },
         BG_Flugzeug: {
         name: "Testroom02",
-        background: "./Assets/Backgrounds/spr_BG_Flugzeug.jpg"
+        background: "./Assets/Backgrounds/spr_Kamikaze.png"
         },
     }
 }
