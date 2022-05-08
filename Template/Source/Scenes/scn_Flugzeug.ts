@@ -10,29 +10,30 @@ namespace Template {
         //await ƒS.Location.show(backgrounds.BG_Baum);
         await ƒS.update(0.5);
         await ƒS.Speech.tell(characters.yamato,dialog.flugzeug.T0002);
-        return scn_flugzeug();
-
-        let Dialogoption = { //selbst benennen Firstdialogblob
+        await ƒS.update(0.1);
+        ƒS.Character.hideAll();
+        ƒS.Speech.hide();
+        await ƒS.update(0.1);
+        let Kamikaze = { //selbst benennen Firstdialogblob
             Death: "Yes.",
             Life: "No."
             };
-            let firstDialogueElement = await ƒS.Menu.getInput(Dialogoption, "individualCSSClass");
-      console.log(firstDialogueElement);//gibt Informationen/Variabeln in Browserkonsole aus (f12)
+            let firstDialogueElement = await ƒS.Menu.getInput(Kamikaze, "individualCSSClass");
+            console.log(firstDialogueElement);//gibt Informationen/Variabeln in Browserkonsole aus (f12)
       
             switch (firstDialogueElement) {
-              case Dialogoption.Death:
+              case Kamikaze.Death:
               await ƒS.Speech.tell(characters.yamato, "Nippon, Banzai!.");
               break;
-              case Dialogoption.Life:
+              case Kamikaze.Life:
               await ƒS.Speech.tell(characters.yamato, "Ich kann es schaffen zurück zu fliegen");
               return scn_schiff();
               break;
-              }
-
-
-
+            }
     }
 }
+
+
 
 
 

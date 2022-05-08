@@ -125,7 +125,7 @@ var Template;
         },
         BG_Flugzeug: {
             name: "Testroom02",
-            background: "./Assets/Backgrounds/spr_BG_Flugzeug.jpg"
+            background: "./Assets/Backgrounds/spr_Kamikaze.png"
         },
     };
 })(Template || (Template = {}));
@@ -156,7 +156,7 @@ var Template;
         flugzeug: {
             T0000: "Marmeladen sind lecker",
             T0001: "Fußball ist schnell",
-            T0002: "Suppe ist warm gut",
+            T0002: "Bin ich tatsächlich bereit dafür?",
         },
     };
 })(Template || (Template = {}));
@@ -165,15 +165,33 @@ var Template;
     async function scn_flugzeug() {
         await Template.ƒS.Location.show(Template.backgrounds.BG_Flugzeug);
         await Template.ƒS.update(1);
-        await Template.ƒS.Character.show(Template.characters.aisaka, Template.characters.aisaka.pose.smile, Template.ƒS.positions.bottomcenter);
-        await Template.ƒS.update(1);
-        await Template.ƒS.Speech.tell("Marie", "hi, ich bin Marie");
-        await Template.ƒS.Speech.tell(Template.characters.yamato, "hii, Marie, wie gehts?");
-        await Template.ƒS.Character.show(Template.characters.aisaka, Template.characters.aisaka.pose.upset, Template.ƒS.positions.bottomcenter);
-        await Template.ƒS.Location.show(Template.backgrounds.BG_Baum);
+        //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.smile, ƒS.positions.bottomcenter);
+        //await ƒS.update(1);
+        await Template.ƒS.Speech.tell("Playername", "mein Flugzeug ist beschädigt");
+        await Template.ƒS.Speech.tell(Template.characters.yamato, "Nun ist wohl der Moment gekommen?");
+        //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.upset, ƒS.positions.bottomcenter);
+        //await ƒS.Location.show(backgrounds.BG_Baum);
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.characters.yamato, Template.dialog.flugzeug.T0002);
-        return scn_flugzeug();
+        await Template.ƒS.update(0.1);
+        Template.ƒS.Character.hideAll();
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.update(0.1);
+        let Dialogoption = {
+            Death: "Yes.",
+            Life: "No."
+        };
+        let firstDialogueElement = await Template.ƒS.Menu.getInput(Dialogoption, "individualCSSClass");
+        console.log(firstDialogueElement); //gibt Informationen/Variabeln in Browserkonsole aus (f12)
+        switch (firstDialogueElement) {
+            case Dialogoption.Death:
+                await Template.ƒS.Speech.tell(Template.characters.yamato, "Nippon, Banzai!.");
+                break;
+            case Dialogoption.Life:
+                await Template.ƒS.Speech.tell(Template.characters.yamato, "Ich kann es schaffen zurück zu fliegen");
+                return Template.scn_schiff();
+                break;
+        }
     }
     Template.scn_flugzeug = scn_flugzeug;
 })(Template || (Template = {}));

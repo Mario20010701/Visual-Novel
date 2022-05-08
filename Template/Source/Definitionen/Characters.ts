@@ -3,7 +3,7 @@ namespace Template {
         narrator: {
           name: "",
         },
-        aisaka: {
+        Aisaka: {
           name: "Aisaka",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           pose: {
@@ -16,6 +16,13 @@ namespace Template {
           name: "Yamato",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           
-        }
+        },
+        mother: {
+          name: "Mutter",
+          origin: ƒS.ORIGIN.BOTTOMCENTER,
+          pose: {
+            default: "./Assets/Characters/Mother/mother.png",
+          }
+        },
     };
 }

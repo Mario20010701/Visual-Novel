@@ -9,5 +9,21 @@ namespace Template {
         name: "Testroom02",
         background: "./Assets/Backgrounds/spr_Kamikaze.png"
         },
+        BG_Americanformation: {
+        name: "Formation",
+        background: "./Assets/Backgrounds/americanformationpainted.png.png"
+        },
+        BG_AmericanlandingPhil: {
+        name: "LandingGeneral",
+        background: "./Assets/americanlandingonphillipines.png"
+        },
+        BG_JapaneseCapture: {
+        name: "Americandefeat",
+        background: "./Assets/Backgrounds/japanesecaptureamericansanime.png"
+        },
+        BG_Atomic: {
+        name: "Nagasaki",
+        background: "./Assets/Backgrounds/animenagasaki.png"
+        },
     }
 }
