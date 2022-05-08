@@ -19,6 +19,22 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        BG_Americanformation: {
+            name: string;
+            background: string;
+        };
+        BG_AmericanlandingPhil: {
+            name: string;
+            background: string;
+        };
+        BG_JapaneseCapture: {
+            name: string;
+            background: string;
+        };
+        BG_Atomic: {
+            name: string;
+            background: string;
+        };
     };
 }
 declare namespace Template {
@@ -26,7 +42,7 @@ declare namespace Template {
         narrator: {
             name: string;
         };
-        aisaka: {
+        Aisaka: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
@@ -38,6 +54,13 @@ declare namespace Template {
         yamato: {
             name: string;
             origin: ƒ.ORIGIN2D;
+        };
+        mother: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
         };
     };
 }

@@ -127,6 +127,22 @@ var Template;
             name: "Testroom02",
             background: "./Assets/Backgrounds/spr_Kamikaze.png"
         },
+        BG_Americanformation: {
+            name: "Formation",
+            background: "./Assets/Backgrounds/americanformationpainted.png.png"
+        },
+        BG_AmericanlandingPhil: {
+            name: "LandingGeneral",
+            background: "./Assets/americanlandingonphillipines.png"
+        },
+        BG_JapaneseCapture: {
+            name: "Americandefeat",
+            background: "./Assets/Backgrounds/japanesecaptureamericansanime.png"
+        },
+        BG_Atomic: {
+            name: "Nagasaki",
+            background: "./Assets/Backgrounds/animenagasaki.png"
+        },
     };
 })(Template || (Template = {}));
 var Template;
@@ -135,7 +151,7 @@ var Template;
         narrator: {
             name: "",
         },
-        aisaka: {
+        Aisaka: {
             name: "Aisaka",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
@@ -147,7 +163,14 @@ var Template;
         yamato: {
             name: "Yamato",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
-        }
+        },
+        mother: {
+            name: "Mutter",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                default: "./Assets/Characters/Mother/mother.png",
+            }
+        },
     };
 })(Template || (Template = {}));
 var Template;
@@ -177,17 +200,17 @@ var Template;
         Template.ƒS.Character.hideAll();
         Template.ƒS.Speech.hide();
         await Template.ƒS.update(0.1);
-        let Dialogoption = {
+        let Kamikaze = {
             Death: "Yes.",
             Life: "No."
         };
-        let firstDialogueElement = await Template.ƒS.Menu.getInput(Dialogoption, "individualCSSClass");
+        let firstDialogueElement = await Template.ƒS.Menu.getInput(Kamikaze, "individualCSSClass");
         console.log(firstDialogueElement); //gibt Informationen/Variabeln in Browserkonsole aus (f12)
         switch (firstDialogueElement) {
-            case Dialogoption.Death:
+            case Kamikaze.Death:
                 await Template.ƒS.Speech.tell(Template.characters.yamato, "Nippon, Banzai!.");
                 break;
-            case Dialogoption.Life:
+            case Kamikaze.Life:
                 await Template.ƒS.Speech.tell(Template.characters.yamato, "Ich kann es schaffen zurück zu fliegen");
                 return Template.scn_schiff();
                 break;
@@ -198,7 +221,18 @@ var Template;
 var Template;
 (function (Template) {
     async function scn_schiff() {
-        await Template.ƒS.Speech.tell("Marie", "hi, ich bin Marie");
+        //await ƒS.Speech.tell("Marie","hi, ich bin Marie");  
+        await Template.ƒS.Location.show(Template.backgrounds.BG_AmericanlandingPhil);
+        await Template.ƒS.update(1);
+        //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.smile, ƒS.positions.bottomcenter);
+        //await ƒS.update(1);
+        await Template.ƒS.Speech.tell("Playername", "mein Flugzeug ist beschädigt");
+        await Template.ƒS.Speech.tell(Template.characters.yamato, "Nun ist wohl der Moment gekommen?");
+        await Template.ƒS.Character.show(Template.characters.mother, Template.characters.mother.pose.default, Template.ƒS.positions.bottomcenter);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell("Father", "warum bist du zurückgekehrt?");
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "Die Amerikaner sind nun hier gelandet.");
+        await Template.ƒS.update(1);
     }
     Template.scn_schiff = scn_schiff;
 })(Template || (Template = {}));
