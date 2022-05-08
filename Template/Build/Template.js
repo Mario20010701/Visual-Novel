@@ -133,7 +133,7 @@ var Template;
         },
         BG_AmericanlandingPhil: {
             name: "LandingGeneral",
-            background: "./Assets/americanlandingonphillipines.png"
+            background: "./Assets/animeamericanlandingonphillipinesSmall.jpeg"
         },
         BG_JapaneseCapture: {
             name: "Americandefeat",
@@ -204,9 +204,9 @@ var Template;
             Death: "Yes.",
             Life: "No."
         };
-        let firstDialogueElement = await Template.ƒS.Menu.getInput(Kamikaze, "individualCSSClass");
-        console.log(firstDialogueElement); //gibt Informationen/Variabeln in Browserkonsole aus (f12)
-        switch (firstDialogueElement) {
+        let Kamikazejanein = await Template.ƒS.Menu.getInput(Kamikaze, "individualCSSClass");
+        console.log(Kamikazejanein); //gibt Informationen/Variabeln in Browserkonsole aus (f12)
+        switch (Kamikazejanein) {
             case Kamikaze.Death:
                 await Template.ƒS.Speech.tell(Template.characters.yamato, "Nippon, Banzai!.");
                 break;
@@ -225,14 +225,17 @@ var Template;
 var Template;
 (function (Template) {
     async function scn_schiff() {
-        //await ƒS.Speech.tell("Marie","hi, ich bin Marie");  
-        await Template.ƒS.Location.show(Template.backgrounds.BG_AmericanlandingPhil);
         await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell("Marie", "hi, ich bin Marie");
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Location.show(Template.backgrounds.BG_AmericanlandingPhil);
+        await Template.ƒS.update(0.5);
         //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.smile, ƒS.positions.bottomcenter);
         //await ƒS.update(1);
         await Template.ƒS.Character.show(Template.characters.mother, Template.characters.mother.pose.default, Template.ƒS.positions.bottomcenter);
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell("Father", "warum bist du zurückgekehrt?");
+        await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Die Amerikaner sind nun hier gelandet.");
         await Template.ƒS.update(1);
     }

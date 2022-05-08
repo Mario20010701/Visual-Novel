@@ -15,7 +15,7 @@ namespace Template {
         },
         BG_AmericanlandingPhil: {
         name: "LandingGeneral",
-        background: "./Assets/americanlandingonphillipines.png"
+        background: "./Assets/animeamericanlandingonphillipinesSmall.jpeg"
         },
         BG_JapaneseCapture: {
         name: "Americandefeat",
