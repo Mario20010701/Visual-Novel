@@ -47,6 +47,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        BG_Black: {
+            name: string;
+            background: string;
+        };
     };
 }
 declare namespace Template {

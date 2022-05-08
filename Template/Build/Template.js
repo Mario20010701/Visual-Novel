@@ -155,6 +155,10 @@ var Template;
             name: "fight",
             background: "./Assets/Backgrounds/amisgefecht.png"
         },
+        BG_Black: {
+            name: "black",
+            background: "./Assets/Backgrounds/black.png"
+        },
     };
 })(Template || (Template = {}));
 var Template;
@@ -291,8 +295,23 @@ var Template;
         Template.ƒS.Speech.hide();
         await Template.ƒS.update(0.1);
         await Template.ƒS.update(2);
-        await Template.ƒS.Location.show(Template.backgrounds.BG_AmisGefecht);
-        await Template.ƒS.update(0.2);
+        await Template.ƒS.Location.show(Template.backgrounds.BG_Black);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "einige Jahre vorher");
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.backgrounds.BG_trad);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Character.show(Template.characters.Vater, Template.characters.Vater.pose.default, Template.ƒS.positions.left);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Charactername, bald wird dein kleiner Bruder, Yamato, auch zur Armee gehen, damit aus ihm auch so ein tapferer Soldat Japans wird, wie du einer bist.");
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Ich bin stolz auf dich, mein Sohn. Wirst du nicht morgen zum Rikugun Chūjō (Generalleutnant) befördert?");
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "Ja Vater, ich werde unserem Japan alle Ehre machen.");
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Vergiss die Geschichte nicht. Heute mögen die Deutschen unsere Verbündeten sein, aber vor 26 Jahren waren wir im Krieg mit ihnen. Vielleicht wird es wieder so kommen.");
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "Der Dreimächtepakt ist in Japans bestem Interesse, Vater. Japan wird ein Teil der neuen Welt sein, die in diesen schicksalhaften Jahren des Kampfes entsteht.");
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "Ich werde mein Bestes geben, und dafür sorgen, dass die Japaner in dieser kommenden Welt den Platz einnehmen werden, der ihnen auch zusteht.");
     }
     Template.scn_schiffOst = scn_schiffOst;
 })(Template || (Template = {}));

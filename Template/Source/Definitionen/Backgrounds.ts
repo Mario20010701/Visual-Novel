@@ -37,5 +37,9 @@ namespace Template {
         name: "fight",
         background: "./Assets/Backgrounds/amisgefecht.png"
         },
+        BG_Black: {
+        name: "black",
+        background: "./Assets/Backgrounds/black.png"
+        },
     }
 }
