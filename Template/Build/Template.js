@@ -129,11 +129,11 @@ var Template;
         },
         BG_Americanformation: {
             name: "Formation",
-            background: "./Assets/Backgrounds/americanformationpainted.png.png"
+            background: "./Assets/Backgrounds/americanformationpainted.png"
         },
         BG_AmericanlandingPhil: {
             name: "LandingGeneral",
-            background: "./Assets/animeamericanlandingonphillipinesSmall.jpeg"
+            background: "./Assets/Backgrounds/animeamericanlandingonphillipinesSmall.jpeg"
         },
         BG_JapaneseCapture: {
             name: "Americandefeat",
@@ -225,8 +225,13 @@ var Template;
 var Template;
 (function (Template) {
     async function scn_schiff() {
-        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.backgrounds.BG_AmericanlandingPhil);
+        await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell("Marie", "hi, ich bin Marie");
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Location.show(Template.backgrounds.BG_Americanformation);
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Speech.tell("Father", "warum bist du zurückgekehrt?");
         await Template.ƒS.update(0.5);
         await Template.ƒS.Location.show(Template.backgrounds.BG_AmericanlandingPhil);
         await Template.ƒS.update(0.5);
@@ -234,8 +239,6 @@ var Template;
         //await ƒS.update(1);
         await Template.ƒS.Character.show(Template.characters.mother, Template.characters.mother.pose.default, Template.ƒS.positions.bottomcenter);
         await Template.ƒS.update(1);
-        await Template.ƒS.Speech.tell("Father", "warum bist du zurückgekehrt?");
-        await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Die Amerikaner sind nun hier gelandet.");
         await Template.ƒS.update(1);
     }

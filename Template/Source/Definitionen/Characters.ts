@@ -24,5 +24,12 @@ namespace Template {
             default: "./Assets/Characters/Mother/mother.png",
           }
         },
+        Vater: {
+          name: "Vater",
+          origin: ƒS.ORIGIN.BOTTOMCENTER,
+          pose: {
+            default: "./Assets/Characters/Father/Father.png",
+          }
+        },
     };
 }
