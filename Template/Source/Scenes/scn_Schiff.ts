@@ -5,8 +5,6 @@ namespace Template {
     await ƒS.update(1);
     //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.smile, ƒS.positions.bottomcenter);
     //await ƒS.update(1);
-    await ƒS.Speech.tell("Playername","mein Flugzeug ist beschädigt");   
-    await ƒS.Speech.tell(characters.yamato,"Nun ist wohl der Moment gekommen?");
     await ƒS.Character.show(characters.mother, characters.mother.pose.default, ƒS.positions.bottomcenter);
     await ƒS.update(1);
     await ƒS.Speech.tell("Father","warum bist du zurückgekehrt?");

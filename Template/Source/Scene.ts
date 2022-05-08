@@ -41,7 +41,7 @@ namespace Template {
       iSayNo: "No."
       };
       let firstDialogueElement = await ƒS.Menu.getInput(Dialogoption, "individualCSSClass");
-console.log(firstDialogueElement);//gibt Informationen/Variabeln in Browserkonsole aus (f12)
+      console.log(firstDialogueElement);//gibt Informationen/Variabeln in Browserkonsole aus (f12)
 
       switch (firstDialogueElement) {
         case Dialogoption.Bob:

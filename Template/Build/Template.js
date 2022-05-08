@@ -212,11 +212,15 @@ var Template;
                 break;
             case Kamikaze.Life:
                 await Template.ƒS.Speech.tell(Template.characters.yamato, "Ich kann es schaffen zurück zu fliegen");
+                await Template.ƒS.update(0.1);
+                Template.ƒS.Character.hideAll();
+                Template.ƒS.Speech.hide();
                 return Template.scn_schiff();
                 break;
         }
     }
     Template.scn_flugzeug = scn_flugzeug;
+    ;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -226,8 +230,6 @@ var Template;
         await Template.ƒS.update(1);
         //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.smile, ƒS.positions.bottomcenter);
         //await ƒS.update(1);
-        await Template.ƒS.Speech.tell("Playername", "mein Flugzeug ist beschädigt");
-        await Template.ƒS.Speech.tell(Template.characters.yamato, "Nun ist wohl der Moment gekommen?");
         await Template.ƒS.Character.show(Template.characters.mother, Template.characters.mother.pose.default, Template.ƒS.positions.bottomcenter);
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell("Father", "warum bist du zurückgekehrt?");
