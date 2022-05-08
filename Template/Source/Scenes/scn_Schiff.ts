@@ -1,6 +1,8 @@
 namespace Template {
     export async function scn_schiff():ƒS.SceneReturn {
-    //await ƒS.Speech.tell("Marie","hi, ich bin Marie");  
+    await ƒS.update(1);
+    await ƒS.Speech.tell("Marie","hi, ich bin Marie");  
+    await ƒS.update(1);
     await ƒS.Location.show(backgrounds.BG_AmericanlandingPhil);
     await ƒS.update(1);
     //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.smile, ƒS.positions.bottomcenter);

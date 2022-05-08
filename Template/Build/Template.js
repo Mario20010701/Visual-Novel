@@ -212,7 +212,7 @@ var Template;
                 break;
             case Kamikaze.Life:
                 await Template.ƒS.Speech.tell(Template.characters.yamato, "Ich kann es schaffen zurück zu fliegen");
-                await Template.ƒS.update(0.1);
+                await Template.ƒS.update(0.2);
                 Template.ƒS.Character.hideAll();
                 Template.ƒS.Speech.hide();
                 return Template.scn_schiff();
