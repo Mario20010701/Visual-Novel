@@ -19,6 +19,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        BG_blitz: {
+            name: string;
+            background: string;
+        };
         BG_Americanformation: {
             name: string;
             background: string;
@@ -32,6 +36,14 @@ declare namespace Template {
             background: string;
         };
         BG_Atomic: {
+            name: string;
+            background: string;
+        };
+        BG_trad: {
+            name: string;
+            background: string;
+        };
+        BG_AmisGefecht: {
             name: string;
             background: string;
         };
@@ -62,6 +74,13 @@ declare namespace Template {
                 default: string;
             };
         };
+        Vater: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
+        };
     };
 }
 declare namespace Template {
@@ -78,4 +97,7 @@ declare namespace Template {
 }
 declare namespace Template {
     function scn_schiff(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function scn_schiffOst(): ƒS.SceneReturn;
 }

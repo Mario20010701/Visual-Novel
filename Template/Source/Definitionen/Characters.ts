@@ -28,7 +28,7 @@ namespace Template {
           name: "Vater",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           pose: {
-            default: "./Assets/Characters/Father/Father.png",
+            default: "./Assets/Characters/Father/ch_Father.png",
           }
         },
     };
