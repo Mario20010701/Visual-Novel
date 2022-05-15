@@ -56,17 +56,65 @@ namespace Template {
 
     let gameMenu: ƒS.Menu;
 
-    //true = offen; false geschlossen
-    let menuIsOpen: boolean = true;
+  // true = offen; false = geschlossen
+  let menuIsOpen: boolean = true;
 
-    async function buttonFunctionalities(_option: string): Promise<void> {
 
+  async function buttonFunctionalities(_option: string): Promise<void> {
+    console.log(_option);
+    switch (_option) {
+      case inGameMenuButtons.save:
+        await ƒS.Progress.save();
+        break;
+      case inGameMenuButtons.load:
+        await ƒS.Progress.load();
+        break;
+      case inGameMenuButtons.close:
+        gameMenu.close();
+        menuIsOpen = false;
+        break;
+      //case inGameMenuButtons.credits:
+        //showCredits();
     }
+  }
+
+
+  // Shortcuts für's Menü
+  document.addEventListener("keydown", hndKeyPress);
+  async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+    switch (_event.code) {
+      case ƒ.KEYBOARD_CODE.F8:
+        console.log("Save");
+        await ƒS.Progress.save();
+        break;
+      case ƒ.KEYBOARD_CODE.F9:
+        console.log("Load");
+        await ƒS.Progress.load();
+        break;
+      case ƒ.KEYBOARD_CODE.M:
+        if (menuIsOpen) {
+          console.log("Close");
+          gameMenu.close();
+          menuIsOpen = false;
+        }
+        else {
+          console.log("Open");
+          gameMenu.open();
+          menuIsOpen = true;
+        }
+        break;
+    }
+  }
+
 
 
 
     window.addEventListener("load", start);
     function start(_event: Event): void {   
+      // Menü
+      gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
+      // Menü zu Beginn geschlossen halten
+      buttonFunctionalities("Close");
       let scenes: ƒS.Scenes = [
         { scene: Scene, name: "Scene" }
       ];

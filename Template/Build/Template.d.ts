@@ -51,6 +51,14 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        BG_Temple: {
+            name: string;
+            background: string;
+        };
+        BG_Generalstab: {
+            name: string;
+            background: string;
+        };
     };
 }
 declare namespace Template {
@@ -85,6 +93,27 @@ declare namespace Template {
                 default: string;
             };
         };
+        General_Yamamoto_Isoruku: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
+        };
+        General_Genkimura_Heirato: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
+        };
+        General_Hideki_Tojo: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
+        };
     };
 }
 declare namespace Template {
@@ -94,6 +123,11 @@ declare namespace Template {
             T0001: string;
             T0002: string;
         };
+    };
+}
+declare namespace Template {
+    let sound: {
+        testtt: string;
     };
 }
 declare namespace Template {

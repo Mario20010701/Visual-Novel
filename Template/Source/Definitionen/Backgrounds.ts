@@ -41,5 +41,13 @@ namespace Template {
         name: "black",
         background: "./Assets/Backgrounds/black.png"
         },
+        BG_Temple: {
+        name: "Temple",
+        background: "./Assets/Backgrounds/spr_bg_temple.png"
+        },
+        BG_Generalstab: {
+        name: "Generalstab",
+        background: "./Assets/Backgrounds/bg_generalstab.png"
+        },
     }
 }

@@ -31,5 +31,26 @@ namespace Template {
             default: "./Assets/Characters/Father/ch_Father.png",
           }
         },
+        General_Yamamoto_Isoruku: {
+          name: "General Isoruku",
+          origin: ƒS.ORIGIN.BOTTOMCENTER,
+          pose: {
+            default: "./Assets/Characters/General_Yamamoto_isoruku/char_generalyamamoto_isoruku.png",
+          }
+        },
+        General_Genkimura_Heirato: {
+          name: "General Heitaro",
+          origin: ƒS.ORIGIN.BOTTOMCENTER,
+          pose: {
+            default: "./Assets/Characters/General_genkimura_heitaro/chara_genkimura_heitaro.png",
+          }
+        },
+        General_Hideki_Tojo: {
+          name: "General Tojo",
+          origin: ƒS.ORIGIN.BOTTOMCENTER,
+          pose: {
+            default: "./Assets/Characters/General_Hideki_Tojo/generhidekitojo.png",
+          }
+        },
     };
 }
