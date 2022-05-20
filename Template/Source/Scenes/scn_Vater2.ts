@@ -1,5 +1,5 @@
 namespace Template {
-    export async function scn_schiffOst():ƒS.SceneReturn {
+    export async function scn_Vater2():ƒS.SceneReturn {
         await ƒS.Location.show(backgrounds.BG_blitz);
         await ƒS.update(0.1);
         await ƒS.Location.show(backgrounds.BG_Flugzeug);
@@ -25,7 +25,7 @@ namespace Template {
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.Vater,DataForSave.nameProtagonist);
         await ƒS.update(0.2);
-        ƒS.Speech.tell(characters.Vater,"Bald wird dein kleiner Bruder, Yamato, auch zur Armee gehen, damit aus ihm auch so ein tapferer Soldat Japans wird, wie du einer bist.");
+        await ƒS.Speech.tell(characters.Vater,"Bald wird dein kleiner Bruder, Yamato, auch zur Armee gehen, damit aus ihm auch so ein tapferer Soldat Japans wird, wie du einer bist.");
         await ƒS.update(0.5);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.Vater,"Ich bin stolz auf dich, mein Sohn. Wirst du nicht morgen zum Rikugun Chūjō (Generalleutnant) befördert?");
@@ -36,6 +36,41 @@ namespace Template {
         await ƒS.Speech.tell(DataForSave.nameProtagonist,"Ich werde mein Bestes geben, und dafür sorgen, dass die Japaner in dieser kommenden Welt den Platz einnehmen werden, der ihnen auch zusteht.");
         ƒS.Speech.hide();
         await ƒS.update(0.5);
-        await ƒS.Speech.tell(characters.Vater,"Danke dass du mich besucht hast ");
+        await ƒS.Speech.tell(characters.Vater,"Danke dass du Zeit gefunden hast, vorbeizuschauen. Ich weiß du hast viel zu tun, aber ich denke, deine Mutter würde sich ebenfalls freuen wenn sie dich noch einmal als Leutnant sehen darf.");
+        await ƒS.Speech.tell(characters.Vater,"Hast du noch einen Moment Zeit für deine Mutter, bevor du nach Tokyo aufbrichst?");
+        
+        let Motherdialog = {
+            Yes: "Natürlich Vater",
+            no: "Ich befürchte, ich werde sonst zu spät eintreffen"
         }
+        let MotherYesNo = await ƒS.Menu.getInput(Motherdialog, "individualCSSClass");
+        console.log(MotherYesNo);//gibt Informationen/Variabeln in Browserkonsole aus (f12)
+      
+        switch (MotherYesNo) {
+        case Motherdialog.Yes:
+        await ƒS.Speech.tell(characters.Vater,"Ich schicke Sie gleich zu dir.");
+        await ƒS.update(0.5);
+        ƒS.Speech.hide();
+        ƒS.Character.hideAll();
+        await ƒS.update(2.5);
+        await ƒS.Speech.tell(characters.Vater,"Natsuki!");
+        await ƒS.Speech.tell(characters.Vater,"Unser Sohn ist hier!");
+        await ƒS.update(0.2);
+        await ƒS.Speech.tell(characters.mother,"Welcher der meinen beiden wackeren Knaben ist es denn?");
+        await ƒS.Speech.tell(characters.Vater,DataForSave.nameProtagonist);
+        await ƒS.update(0.2);
+        await ƒS.Speech.tell(characters.mother,"Oh, Ich komme sofort!");
+
+        ƒS.Character.hideAll();
+        ƒS.Speech.hide();
+        break;
+        case Motherdialog.no:
+        await ƒS.Speech.tell(characters.Vater,"Na, dann lass dich nicht aufhalten und frag deinen General bald nach Urlaub. Dann können wir mal wieder Mahjong gegeneinander spielen.");
+        await ƒS.update(0.2);
+        ƒS.Character.hideAll();
+        ƒS.Speech.hide();
+        break;
+        }
+        return scn_Tempel();
+    }
 }

@@ -322,18 +322,18 @@ var Template;
             Life: "No."
         };
         let Kamikazejanein = await Template.ƒS.Menu.getInput(Kamikaze, "individualCSSClass");
-        console.log(Kamikazejanein); //gibt Informationen/Variabeln in Browserkonsole aus (f12)
+        console.log(Kamikazejanein);
         switch (Kamikazejanein) {
             case Kamikaze.Death:
                 await Template.ƒS.Speech.tell(Template.characters.yamato, "Nippon, Banzai!.");
-                return Template.scn_schiffOst();
+                return Template.scn_Vater2();
                 break;
             case Kamikaze.Life:
                 await Template.ƒS.Speech.tell(Template.characters.yamato, "Nein! Ich kann es schaffen zurück zu fliegen!");
                 await Template.ƒS.update(0.2);
                 Template.ƒS.Character.hideAll();
                 Template.ƒS.Speech.hide();
-                return Template.scn_schiff();
+                return Template.scn_Vater1();
                 break;
         }
     }
@@ -342,7 +342,24 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    async function scn_schiff() {
+    async function scn_Tempel() {
+        await Template.ƒS.Location.show(Template.backgrounds.BG_Black);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.backgrounds.BG_Temple);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Character.show(Template.characters.General_Genkimura_Heirato, Template.characters.General_Genkimura_Heirato.pose.default, Template.ƒS.positions.left);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Character.show(Template.characters.General_Hideki_Tojo, Template.characters.General_Hideki_Tojo.pose.default, Template.ƒS.positions.bottomcenter);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Character.show(Template.characters.General_Yamamoto_Isoruku, Template.characters.General_Yamamoto_Isoruku.pose.default, Template.ƒS.positions.right);
+        await Template.ƒS.update(1);
+    }
+    Template.scn_Tempel = scn_Tempel;
+    ;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function scn_Vater1() {
         await Template.ƒS.Location.show(Template.backgrounds.BG_Black);
         await Template.ƒS.update(1);
         await Template.ƒS.update(0.5);
@@ -364,8 +381,8 @@ var Template;
         await Template.ƒS.Character.show(Template.characters.Vater, Template.characters.Vater.pose.default, Template.ƒS.positions.bottomcenter);
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.characters.Vater, Template.DataForSave.nameProtagonist);
-        await Template.ƒS.update(0.2);
-        Template.ƒS.Speech.tell(Template.characters.Vater, "Bald wird dein kleiner Bruder, Yamato, auch zur Armee gehen, damit aus ihm auch so ein tapferer Soldat Japans wird, wie du einer bist.");
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Bald wird dein kleiner Bruder, Yamato, auch zur Armee gehen, damit aus ihm auch so ein tapferer Soldat Japans wird, wie du einer bist.");
         await Template.ƒS.update(0.5);
         //await ƒS.Location.show(backgrounds.BG_AmericanlandingPhil);
         //await ƒS.update(0.5);
@@ -379,12 +396,43 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.Vater, "Vergiss die Geschichte nicht. Heute mögen die Deutschen unsere Verbündeten sein, aber vor 26 Jahren waren wir im Krieg mit ihnen. Vielleicht wird es wieder so kommen.");
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Der Dreimächtepakt ist in Japans bestem Interesse, Vater. Japan wird ein Teil der neuen Welt sein, die in diesen schicksalhaften Jahren des Kampfes entsteht.");
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Ich werde mein Bestes geben, und dafür sorgen, dass die Japaner in dieser kommenden Welt den Platz einnehmen werden, der ihnen auch zusteht.");
+        let Motherdialog = {
+            Yes: "Natürlich Vater",
+            no: "Ich befürchte, ich werde sonst zu spät eintreffen"
+        };
+        let MotherYesNo = await Template.ƒS.Menu.getInput(Motherdialog, "individualCSSClass");
+        console.log(MotherYesNo); //gibt Informationen/Variabeln in Browserkonsole aus (f12)
+        switch (MotherYesNo) {
+            case Motherdialog.Yes:
+                await Template.ƒS.Speech.tell(Template.characters.Vater, "Ich schicke Sie gleich zu dir.");
+                await Template.ƒS.update(0.5);
+                Template.ƒS.Speech.hide();
+                Template.ƒS.Character.hideAll();
+                await Template.ƒS.update(2.5);
+                await Template.ƒS.Speech.tell(Template.characters.Vater, "Natsuki!");
+                await Template.ƒS.Speech.tell(Template.characters.Vater, "Unser Sohn ist hier!");
+                await Template.ƒS.update(0.2);
+                await Template.ƒS.Speech.tell(Template.characters.mother, "Welcher der meinen beiden wackeren Knaben ist es denn?");
+                await Template.ƒS.Speech.tell(Template.characters.Vater, Template.DataForSave.nameProtagonist);
+                await Template.ƒS.update(0.2);
+                await Template.ƒS.Speech.tell(Template.characters.mother, "Oh, Ich komme sofort!");
+                Template.ƒS.Character.hideAll();
+                Template.ƒS.Speech.hide();
+                break;
+            case Motherdialog.no:
+                await Template.ƒS.Speech.tell(Template.characters.Vater, "Na, dann lass dich nicht aufhalten und frag deinen General bald nach Urlaub. Dann können wir mal wieder Mahjong gegeneinander spielen.");
+                await Template.ƒS.update(0.2);
+                Template.ƒS.Character.hideAll();
+                Template.ƒS.Speech.hide();
+                break;
+        }
+        return Template.scn_Tempel();
     }
-    Template.scn_schiff = scn_schiff;
+    Template.scn_Vater1 = scn_Vater1;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    async function scn_schiffOst() {
+    async function scn_Vater2() {
         await Template.ƒS.Location.show(Template.backgrounds.BG_blitz);
         await Template.ƒS.update(0.1);
         await Template.ƒS.Location.show(Template.backgrounds.BG_Flugzeug);
@@ -410,7 +458,7 @@ var Template;
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.Vater, Template.DataForSave.nameProtagonist);
         await Template.ƒS.update(0.2);
-        Template.ƒS.Speech.tell(Template.characters.Vater, "Bald wird dein kleiner Bruder, Yamato, auch zur Armee gehen, damit aus ihm auch so ein tapferer Soldat Japans wird, wie du einer bist.");
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Bald wird dein kleiner Bruder, Yamato, auch zur Armee gehen, damit aus ihm auch so ein tapferer Soldat Japans wird, wie du einer bist.");
         await Template.ƒS.update(0.5);
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.Vater, "Ich bin stolz auf dich, mein Sohn. Wirst du nicht morgen zum Rikugun Chūjō (Generalleutnant) befördert?");
@@ -421,8 +469,40 @@ var Template;
         await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "Ich werde mein Bestes geben, und dafür sorgen, dass die Japaner in dieser kommenden Welt den Platz einnehmen werden, der ihnen auch zusteht.");
         Template.ƒS.Speech.hide();
         await Template.ƒS.update(0.5);
-        await Template.ƒS.Speech.tell(Template.characters.Vater, "Danke dass du mich besucht hast ");
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Danke dass du Zeit gefunden hast, vorbeizuschauen. Ich weiß du hast viel zu tun, aber ich denke, deine Mutter würde sich ebenfalls freuen wenn sie dich noch einmal als Leutnant sehen darf.");
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Hast du noch einen Moment Zeit für deine Mutter, bevor du nach Tokyo aufbrichst?");
+        let Motherdialog = {
+            Yes: "Natürlich Vater",
+            no: "Ich befürchte, ich werde sonst zu spät eintreffen"
+        };
+        let MotherYesNo = await Template.ƒS.Menu.getInput(Motherdialog, "individualCSSClass");
+        console.log(MotherYesNo); //gibt Informationen/Variabeln in Browserkonsole aus (f12)
+        switch (MotherYesNo) {
+            case Motherdialog.Yes:
+                await Template.ƒS.Speech.tell(Template.characters.Vater, "Ich schicke Sie gleich zu dir.");
+                await Template.ƒS.update(0.5);
+                Template.ƒS.Speech.hide();
+                Template.ƒS.Character.hideAll();
+                await Template.ƒS.update(2.5);
+                await Template.ƒS.Speech.tell(Template.characters.Vater, "Natsuki!");
+                await Template.ƒS.Speech.tell(Template.characters.Vater, "Unser Sohn ist hier!");
+                await Template.ƒS.update(0.2);
+                await Template.ƒS.Speech.tell(Template.characters.mother, "Welcher der meinen beiden wackeren Knaben ist es denn?");
+                await Template.ƒS.Speech.tell(Template.characters.Vater, Template.DataForSave.nameProtagonist);
+                await Template.ƒS.update(0.2);
+                await Template.ƒS.Speech.tell(Template.characters.mother, "Oh, Ich komme sofort!");
+                Template.ƒS.Character.hideAll();
+                Template.ƒS.Speech.hide();
+                break;
+            case Motherdialog.no:
+                await Template.ƒS.Speech.tell(Template.characters.Vater, "Na, dann lass dich nicht aufhalten und frag deinen General bald nach Urlaub. Dann können wir mal wieder Mahjong gegeneinander spielen.");
+                await Template.ƒS.update(0.2);
+                Template.ƒS.Character.hideAll();
+                Template.ƒS.Speech.hide();
+                break;
+        }
+        return Template.scn_Tempel();
     }
-    Template.scn_schiffOst = scn_schiffOst;
+    Template.scn_Vater2 = scn_Vater2;
 })(Template || (Template = {}));
 //# sourceMappingURL=Template.js.map

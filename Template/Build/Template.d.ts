@@ -134,8 +134,11 @@ declare namespace Template {
     function scn_flugzeug(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function scn_schiff(): ƒS.SceneReturn;
+    function scn_Tempel(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function scn_schiffOst(): ƒS.SceneReturn;
+    function scn_Vater1(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function scn_Vater2(): ƒS.SceneReturn;
 }

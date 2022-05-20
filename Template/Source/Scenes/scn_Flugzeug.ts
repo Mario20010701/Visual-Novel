@@ -25,24 +25,25 @@ namespace Template {
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
     await ƒS.update(0.1);
-    let Kamikaze = { //selbst benennen Firstdialogblob
+    
+    let Kamikaze = { 
       Death: "Yes.",
       Life: "No."
     };
     let Kamikazejanein = await ƒS.Menu.getInput(Kamikaze, "individualCSSClass");
-    console.log(Kamikazejanein);//gibt Informationen/Variabeln in Browserkonsole aus (f12)
+    console.log(Kamikazejanein);
       
     switch (Kamikazejanein) {
       case Kamikaze.Death:
       await ƒS.Speech.tell(characters.yamato, "Nippon, Banzai!.");
-      return scn_schiffOst();
+      return scn_Vater2();
       break;
       case Kamikaze.Life:
       await ƒS.Speech.tell(characters.yamato, "Nein! Ich kann es schaffen zurück zu fliegen!");
       await ƒS.update(0.2);
       ƒS.Character.hideAll();
       ƒS.Speech.hide();
-      return scn_schiff();
+      return scn_Vater1();
       break;
     }
   };
