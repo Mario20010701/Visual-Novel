@@ -17,7 +17,7 @@ namespace Template {
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           
         },
-        mother: {
+        Mutter: {
           name: "Mutter",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           pose: {

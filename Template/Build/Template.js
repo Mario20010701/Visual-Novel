@@ -38,6 +38,14 @@ var Template;
         nameProtagonist: "",
         score: 0
     };
+    Template.inventory = {
+        notiz: {
+            name: "Notiz",
+            description: "Eine Notiz, die dein Bruder zurück ließ",
+            image: "./Assets/Notiz.png",
+            static: true, // so wird es nicht konsumiert. wenn ich static ausklammere, kann ich drauf klicken und es ist weg
+        },
+    };
     //Menü
     //buttons
     let inGameMenuButtons = {
@@ -49,6 +57,7 @@ var Template;
     let gameMenu;
     // true = offen; false = geschlossen
     let menuIsOpen = true;
+    let InventoryIsOpen = false;
     async function buttonFunctionalities(_option) {
         console.log(_option);
         switch (_option) {
@@ -90,6 +99,20 @@ var Template;
                     menuIsOpen = true;
                 }
                 break;
+            // INVENTORY MENU
+            case Template.ƒ.KEYBOARD_CODE.I:
+                console.log("Inventory");
+                if (InventoryIsOpen) {
+                    console.log("Inventory Close");
+                    Template.ƒS.Inventory.close();
+                    InventoryIsOpen = false; // wenn ich m drücke, und das menu geöffnet is, schließe das menu. wenn es offen ist:
+                }
+                else {
+                    console.log("Inventory Open");
+                    Template.ƒS.Inventory.open();
+                    InventoryIsOpen = true;
+                }
+                break;
         }
     }
     window.addEventListener("load", start);
@@ -101,11 +124,11 @@ var Template;
         let scenes = [
             { scene: Template.Scene, name: "Scene" }
         ];
+        let uiElement = document.querySelector("[type=interface]");
+        Template.DataForSave = Template.ƒS.Progress.setData(Template.DataForSave, uiElement);
         // start the sequence
         Template.ƒS.Progress.go(scenes);
     }
-    let uiElement = document.querySelector("[type=interface]");
-    Template.DataForSave = Template.ƒS.Progress.setData(Template.DataForSave, uiElement);
 })(Template || (Template = {}));
 //import { locations, sound } from "./Main";
 //import { characters } from "./Main";
@@ -142,6 +165,8 @@ var Template;
                 break;
         }
         ;
+        // TEST-INVENTORY
+        Template.ƒS.Inventory.add(Template.inventory.notiz);
         let Dialogoption = {
             Bob: "Yes.",
             iSayNo: "No."
@@ -233,7 +258,7 @@ var Template;
             name: "Yamato",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
         },
-        mother: {
+        Mutter: {
             name: "Mutter",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
@@ -284,7 +309,7 @@ var Template;
 (function (Template) {
     Template.sound = {
         // themes
-        testtt: "./Assets/Music/test.mp3"
+        testtt: "./Assets/Music/st.mp3"
         // SFX
         // click: "Pfad"
     };
@@ -294,7 +319,7 @@ var Template;
     async function scn_flugzeug() {
         await Template.ƒS.Location.show(Template.backgrounds.BG_Flugzeug);
         await Template.ƒS.update(1);
-        await Template.ƒS.Sound.fade("./Assets/Music/test.mp3", 0.2, 2, true);
+        await Template.ƒS.Sound.fade("./Assets/Music/st.mp3", 0.2, 2, true);
         //Promise<void>);
         //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.smile, ƒS.positions.bottomcenter);
         //await ƒS.update(1);
@@ -396,6 +421,10 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.Vater, "Vergiss die Geschichte nicht. Heute mögen die Deutschen unsere Verbündeten sein, aber vor 26 Jahren waren wir im Krieg mit ihnen. Vielleicht wird es wieder so kommen.");
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Der Dreimächtepakt ist in Japans bestem Interesse, Vater. Japan wird ein Teil der neuen Welt sein, die in diesen schicksalhaften Jahren des Kampfes entsteht.");
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Ich werde mein Bestes geben, und dafür sorgen, dass die Japaner in dieser kommenden Welt den Platz einnehmen werden, der ihnen auch zusteht.");
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Danke dass du Zeit gefunden hast, vorbeizuschauen. Ich weiß du hast viel zu tun, aber ich denke, deine Mutter würde sich ebenfalls freuen wenn sie dich noch einmal als Leutnant sehen darf.");
+        await Template.ƒS.Speech.tell(Template.characters.Vater, "Hast du noch einen Moment Zeit für deine Mutter, bevor du nach Tokyo aufbrichst?");
         let Motherdialog = {
             Yes: "Natürlich Vater",
             no: "Ich befürchte, ich werde sonst zu spät eintreffen"
@@ -412,10 +441,22 @@ var Template;
                 await Template.ƒS.Speech.tell(Template.characters.Vater, "Natsuki!");
                 await Template.ƒS.Speech.tell(Template.characters.Vater, "Unser Sohn ist hier!");
                 await Template.ƒS.update(0.2);
-                await Template.ƒS.Speech.tell(Template.characters.mother, "Welcher der meinen beiden wackeren Knaben ist es denn?");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Welcher der meinen beiden wackeren Knaben ist es denn?");
                 await Template.ƒS.Speech.tell(Template.characters.Vater, Template.DataForSave.nameProtagonist);
                 await Template.ƒS.update(0.2);
-                await Template.ƒS.Speech.tell(Template.characters.mother, "Oh, Ich komme sofort!");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Oh, Ich komme sofort!");
+                await Template.ƒS.Character.show(Template.characters.Mutter, Template.characters.Mutter.pose.default, Template.ƒS.positions.bottomcenter);
+                await Template.ƒS.update(0.2);
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, Template.DataForSave.nameProtagonist);
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Ich bin so froh dich zu sehen. Wer weiß wie lange du in diesen schrecklichen Zeiten noch lebst mein Sohn.");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Komm, ich hab dir Reisbällchen gemacht. du kannst sie essen, während ich dir ein Bad einlasse.");
+                await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "Es tut mir leid Mutter aber ich muss gleich wieder fort.");
+                await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "Ich bringe dir ein Souvenir aus China mit.");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Ach, mein Sohn. Das wichtigste ist, dass du lebend zurück kommst. Du hast noch nicht einmal geheiratet. Ich habe solche Angst um dich.");
+                await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "Ich werde schon überleben Mutter. Zwar war Vater derjenige der maßgeblich zu meinem Werdegang in Japans Amree beigetragen hat");
+                await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "..aber gib ihm auch im Falle meines Todes keine Schuld Mutter. Solang Japan lebt, lebt auch unser Traum eines stolzen Imperiums, den anderen Nationen ebenbürtig.");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Dein zukünftiges Glück wirst du nicht im Kampfe, im Schlachtfeld finden. Niemand wird das.");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Nun denn, gib auf dich Acht und machs gut mein Sohn...");
                 Template.ƒS.Character.hideAll();
                 Template.ƒS.Speech.hide();
                 break;
@@ -487,10 +528,22 @@ var Template;
                 await Template.ƒS.Speech.tell(Template.characters.Vater, "Natsuki!");
                 await Template.ƒS.Speech.tell(Template.characters.Vater, "Unser Sohn ist hier!");
                 await Template.ƒS.update(0.2);
-                await Template.ƒS.Speech.tell(Template.characters.mother, "Welcher der meinen beiden wackeren Knaben ist es denn?");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Welcher der meinen beiden wackeren Knaben ist es denn?");
                 await Template.ƒS.Speech.tell(Template.characters.Vater, Template.DataForSave.nameProtagonist);
                 await Template.ƒS.update(0.2);
-                await Template.ƒS.Speech.tell(Template.characters.mother, "Oh, Ich komme sofort!");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Oh, Ich komme sofort!");
+                await Template.ƒS.Character.show(Template.characters.Mutter, Template.characters.Mutter.pose.default, Template.ƒS.positions.bottomcenter);
+                await Template.ƒS.update(0.2);
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, Template.DataForSave.nameProtagonist);
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Ich bin so froh dich zu sehen. Wer weiß wie lange du in diesen schrecklichen Zeiten noch lebst mein Sohn.");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Komm, ich hab dir Reisbällchen gemacht. du kannst sie essen, während ich dir ein Bad einlasse.");
+                await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "Es tut mir leid Mutter aber ich muss gleich wieder fort.");
+                await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "Ich bringe dir ein Souvenir aus China mit.");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Ach, mein Sohn. Das wichtigste ist, dass du lebend zurück kommst. Du hast noch nicht einmal geheiratet. Ich habe solche Angst um dich.");
+                await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "Ich werde schon überleben Mutter. Zwar war Vater derjenige der maßgeblich zu meinem Werdegang in Japans Amree beigetragen hat");
+                await Template.ƒS.Speech.tell(Template.DataForSave.nameProtagonist, "..aber gib ihm auch im Falle meines Todes keine Schuld Mutter. Solang Japan lebt, lebt auch unser Traum eines stolzen Imperiums, den anderen Nationen ebenbürtig.");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Dein zukünftiges Glück wirst du nicht im Kampfe, im Schlachtfeld finden. Niemand wird das.");
+                await Template.ƒS.Speech.tell(Template.characters.Mutter, "Nun denn, gib auf dich Acht und machs gut mein Sohn...");
                 Template.ƒS.Character.hideAll();
                 Template.ƒS.Speech.hide();
                 break;

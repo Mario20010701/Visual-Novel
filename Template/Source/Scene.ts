@@ -34,7 +34,8 @@ namespace Template {
       default: console.log("default")
       break;
     };
-
+    // TEST-INVENTORY
+    ƒS.Inventory.add(inventory.notiz);
 
     let Dialogoption = { //selbst benennen Firstdialogblob
       Bob: "Yes.",

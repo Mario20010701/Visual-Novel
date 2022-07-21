@@ -2,7 +2,7 @@ namespace Template {
   export async function scn_flugzeug():ƒS.SceneReturn {
     await ƒS.Location.show(backgrounds.BG_Flugzeug);
     await ƒS.update(1);
-    await ƒS.Sound.fade("./Assets/Music/test.mp3", 0.2, 2, true);
+    await ƒS.Sound.fade("./Assets/Music/st.mp3", 0.2, 2, true);
     //Promise<void>);
     //await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.smile, ƒS.positions.bottomcenter);
     //await ƒS.update(1);

@@ -43,6 +43,14 @@ namespace Template {
       score: 0
     };
 
+    export let inventory = {
+      notiz: {
+        name: "Notiz",
+        description: "Eine Notiz, die dein Bruder zurück ließ",
+        image: "./Assets/Notiz.png",
+        static: true, // so wird es nicht konsumiert. wenn ich static ausklammere, kann ich drauf klicken und es ist weg
+      },
+    };
     //Menü
     //buttons
 
@@ -58,7 +66,7 @@ namespace Template {
 
   // true = offen; false = geschlossen
   let menuIsOpen: boolean = true;
-
+  let InventoryIsOpen: boolean = false;
 
   async function buttonFunctionalities(_option: string): Promise<void> {
     console.log(_option);
@@ -103,9 +111,21 @@ namespace Template {
           menuIsOpen = true;
         }
         break;
+          // INVENTORY MENU
+      case ƒ.KEYBOARD_CODE.I:
+        console.log("Inventory");
+        if (InventoryIsOpen) {
+          console.log("Inventory Close");
+          ƒS.Inventory.close();
+          InventoryIsOpen = false; // wenn ich m drücke, und das menu geöffnet is, schließe das menu. wenn es offen ist:
+        } else {
+          console.log("Inventory Open");
+          ƒS.Inventory.open();
+          InventoryIsOpen = true;
+        }
+        break;
     }
   }
-
 
 
 
@@ -119,10 +139,10 @@ namespace Template {
         { scene: Scene, name: "Scene" }
       ];
 
+      let uiElement: HTMLElement = document.querySelector("[type=interface]");
+      DataForSave = ƒS.Progress.setData(DataForSave, uiElement);
+      
       // start the sequence
       ƒS.Progress.go(scenes);
     }
-
-    let uiElement: HTMLElement = document.querySelector("[type=interface]");
-    DataForSave = ƒS.Progress.setData(DataForSave, uiElement);
   }

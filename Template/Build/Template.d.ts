@@ -5,6 +5,14 @@ declare namespace Template {
         nameProtagonist: string;
         score: number;
     };
+    let inventory: {
+        notiz: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+    };
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;
@@ -79,7 +87,7 @@ declare namespace Template {
             name: string;
             origin: ƒ.ORIGIN2D;
         };
-        mother: {
+        Mutter: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {

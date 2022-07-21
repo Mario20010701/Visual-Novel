@@ -71,3 +71,12 @@ name {
   color: rgb(0, 0, 0);
   margin-bottom: 10px;
 }
+
+dialog[type="inventory"] {
+  background-color: rgb(30, 30, 30);
+  left: 0px;
+  width: 90%;
+  height: 90%;
+  font-size: large;
+
+}
