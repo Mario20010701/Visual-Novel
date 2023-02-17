@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Mindbreakers.css">
+  <script src="Fudge/FudgeCore.js"></script>
+  <script src="FudgeStory/FudgeStory.js"></script>
+  <script src="./Build/Mindbreakers.js"></script>
+  <script language="JavaScript" src="radioscript.js" defer></script>
+  <title>Mindbreakers</title>
+  <splash src="Images/Splash.png" />
+  <style>
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.362);
+      z-index: 10000;
+      pointer-events: auto; /* another useless try to stop the novel, while in menu */ 
+    }
+    #image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #image {
+      align-items: center;
+      position: absolute;
+      max-width: 900px;
+      max-height: 900px;
+    }
+    #info-box {
+      border: 3px solid black;
+      position: relative;
+      z-index: 99999;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.82);
+      padding: 20px;
+      box-shadow: 10px 10px 10px rgb(0, 0, 0);
+      border-radius: 17px;
+      display: block;
+      flex-direction: column;
+      align-items: center;
+      max-width: 200px;
+      max-height: 400px;
+    }
+    #texstyle {
+      font-size: 30px;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: rgb(108, 31, 8);
+      text-align: center;
+    }
+    #texstyle1 {
+      font-size: 14px;
+      font-family: Arial;
+      color: rgb(14, 14, 14);
+      text-align: center;
+    }
+    #texstyle2 {
+      display: none;
+      font-size: 14px;
+      font-family: Arial;
+      color: rgb(14, 14, 14);
+      text-align: center;
+    }
+    .pulsate {
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(108, 31, 8);
+    font-size: 14px;
+    text-align: center;
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+    opacity: 1;
+    }
+    
+    @keyframes pulsate {
+      0% {
+       opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="hidespeech"></div>
+  <div id="info-box">
+    <p id="texstyle">
+      Mindbreakers</p>
+    <p id="texstyle1">
+      [ The mindbreaking Visual Novel, created by Mario Mößlang under the supervision of Yasin Riem and Prof. Jirka Dell'Oro-Friedl (Hochschule Furtwangen) ]</p>
+    <p class="pulsate">
+      This is a game, press anywhere outside this box to start</p>
+      <p id="texstyle2">
+        [ everything u see and hear was created by myself, with the help of free AI webpages like photosonic.writesonic.com, fotor.com, artbreeder.com, craiyon.com and openai.com ]</p>
+  </div>
+  <script>
+    document.addEventListener("click", function (event) {
+        if (event.target.id !== "info-box") {
+          document.getElementById("info-box").style.display = "none";
+          document.getElementById("hidespeech").style.display = "none";
+          document.removeEventListener("click", arguments.callee);
+        }
+      });
+  </script>
+  <div id="overlay">
+    <div id="image-container">
+      <input id="radio-freq" type="range" min="0" max="1" step="0.001" value="0" class="slider"></input>
+      <input id="volume-control" type="range" min="0" max="1" step="0.001" value="0" class="slider"></input>
+      <img id="image" src="" alt="">
+    </div>
+  </div>
+  <script>
+    let sequence = "";
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "r" || event.key === "a" || event.key === "d" || event.key === "i" || event.key === "o") {
+          sequence += event.key;
+          if (sequence === "radio") {
+            const image = document.getElementById("image");
+            image.src = "/radio.png";
+            document.getElementById("overlay").style.display = "flex";
+            document.getElementById("image").style.display = "flex";
+            sequence = ""
+          }
+        }
+        if (event.key === "Escape") {
+            document.getElementById("image").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+            sequence = ""
+          }
+      });
+  </script>
+  <scene>
+    
+    <dialog type="splash" open>
+      <img id="FudgeStoryLogo" theme="dark" /> <!-- use "light" or "dark" -->
+      <p>
+        <img> 
+      </p>
+    </dialog>
+
+    <canvas></canvas>
+
+
+    <speech id="Sprachbox">
+      <name></name>
+      <content></content>
+
+    </speech>
+    <dialog type="inventory">
+      <button type="button">X</button>
+      <ul></ul>
+    </dialog>
+    <dialog type="text">
+    </dialog>
+
+  </scene>
+</body>
+
+</html>

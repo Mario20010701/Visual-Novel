@@ -1,0 +1,280 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 2.3vmin;
+  color: rgb(240, 18, 103);
+  user-select: none;
+}
+
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  input[type='range'] {
+    overflow: hidden;
+    width: 80px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #000000d8;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    color: #13bba4;
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    cursor: ew-resize;
+    background: #730000;
+    box-shadow: -0px 0 0 10px #807752;
+  }
+}
+#nonpulsate {
+  display: block;
+}
+ #radio-freq.slider {
+  border-radius: 10px;
+  position: absolute;
+  left: -162px;
+  width: 350px;
+  outline: none;
+  opacity: 1;
+  z-index: 9999999;
+} 
+#volume-control {
+  border-radius: 10px;
+  position: absolute;
+  margin-top: -36px;
+  left: -162px;
+  width: 350px;
+  outline: none;
+  opacity: 1;
+  z-index: 9999999;
+} 
+
+scene {
+  width: 1280px;
+  height: 720px;
+  display: inline-block;
+  position: absolute;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Splashscreen */
+dialog[type="splash"] {
+  z-index: 9;
+  background-image: url("/background.gif");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+/* dialog[type="splash"] {
+  height: 100%;
+  font-size: 2vmin;
+  color: rgb(255, 255, 255);
+  text-align: center;
+} */
+
+#FudgeStoryLogo {
+  z-index: 9999999999;
+  display: block;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 570px;
+}
+
+
+
+
+
+
+.gameMenu {
+  appearance: none;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.666);
+  left: 0px;
+  height: 1.8%;
+  margin-top: 5px;
+  border-radius: 100px;
+}
+
+#credits {
+
+  size: 100%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 2vmin;
+  font-weight: bold;
+  margin-bottom: -8px;
+  margin-left: 0px;
+  margin-top: -8px;
+  margin-right: 10px;
+}
+
+#save {
+  font-weight: bold;
+  size: 100%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 2vmin;
+  margin-bottom: -8px;
+  margin-left: 10px;
+  margin-top: -8px;
+  margin-right: 0px;
+}
+#load {
+  font-weight: bold;
+  size: 100%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 2vmin;
+  margin-bottom: -8px;
+  margin-left: 0px;
+  margin-top: -8px;
+  margin-right: 0px;
+}
+#close {
+  font-weight: bold;
+  size: 100%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 2vmin;
+  margin-bottom: -8px;
+  margin-left: 0px;
+  margin-top: -8px;
+  margin-right: 0px;
+}
+
+.choicez {
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
+  border: 3px solid black;
+  width: 30%;
+  border-radius: 13px;
+  background-color: rgba(0, 0, 0, 0.636);
+}
+#Ja {
+  height: 50px;
+  width: 100%;
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: rgb(42, 42, 42);
+}
+#No {
+  height: 50px;
+  margin-top: 10%;
+  width: 100%;
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: rgb(0, 0, 0);
+}
+#hidespeech {
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
+speech {
+  z-index: 3;
+  border: 3px solid rgba(0, 0, 0, 0.652);
+  border-radius: 15px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  height: 13%;
+}
+
+speech content {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 2vmin;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+speech name {
+  margin-top: 8px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 3.5vmin;
+  display: block;
+  color: rgb(142, 0, 0);
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+dialog[type="inventory"] {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: rgb(228, 228, 162);
+  left: 0px;
+  width: 40%;
+  height: 40%;
+  font-size: medium;
+  border-radius: 15px;
+}
+
+button[type="button"] {
+  border-radius: 15px;
+}
+
+#radio {
+  width: 50%;
+  height: auto;
+}
+
+::marker{
+display: none;
+z-index: -100000;
+}
+
+li name {
+  margin-top: 8px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2.5vmin;
+  display: block;
+  color: rgb(142, 0, 0);
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+li amount {
+display: none;
+}
+
+li description {
+  margin-top: 8px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.8vmin;
+  display: block;
+  color: rgb(0, 0, 0);
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+li img {
+  width: 50%;
+  height: auto;
+}
